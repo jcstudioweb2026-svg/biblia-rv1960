@@ -2,7 +2,30 @@
 
 let libroActual = "";
 let capituloActual = 0;
+/* =====================
+TAMAÑO DE FUENTE
+===================== */
 
+let tamañoFuente = 18;
+
+function cambiarFuente(valor){
+
+    tamañoFuente += valor;
+
+    if(tamañoFuente < 12){
+        tamañoFuente = 12;
+    }
+
+    if(tamañoFuente > 40){
+        tamañoFuente = 40;
+    }
+
+    document.getElementById(
+        "contenidoCapitulo"
+    ).style.fontSize =
+    tamañoFuente + "px";
+
+}
 /* =====================
 CARGAR BIBLIA
 ===================== */
