@@ -2,7 +2,47 @@
 
 let libroActual = "";
 let capituloActual = 0;
+let tamañoFuente =
+parseInt(
+localStorage.getItem("tamanoBiblia")
+) || 18;
 
+function aplicarTamañoFuente(){
+
+const contenido =
+document.getElementById(
+"contenidoCapitulo"
+);
+
+if(contenido){
+
+contenido.style.fontSize =
+tamañoFuente + "px";
+
+}
+
+}
+
+function cambiarFuente(valor){
+
+tamañoFuente += valor;
+
+if(tamañoFuente < 12){
+tamañoFuente = 12;
+}
+
+if(tamañoFuente > 40){
+tamañoFuente = 40;
+}
+
+localStorage.setItem(
+"tamanoBiblia",
+tamañoFuente
+);
+
+aplicarTamañoFuente();
+
+}
 /* =====================
 CARGAR BIBLIA
 ===================== */
@@ -254,7 +294,7 @@ capitulo
     document.getElementById(
     "contenidoCapitulo"
     ).innerHTML = html;
-
+aplicarTamañoFuente();
 }
 
 /* =====================
@@ -369,7 +409,7 @@ function(){
     ).innerHTML =
     html ||
     "No se encontraron resultados";
-
+aplicarTamañoFuente();
 });
 
 function mostrarTestamento(testamento){
